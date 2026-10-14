@@ -140,7 +140,7 @@ echo "$APP" >"$PIDFILE"
 # Stop Zoltar signals this script rather than the app, so this window reports a normal stop.
 echo $$ >"$LAUNCHER_PIDFILE"
 
-# shellcheck disable=SC2329 # called by the trap below
+# shellcheck disable=SC2317,SC2329 # called by the trap below (older shellcheck reports SC2317, newer SC2329)
 stop() {
   trap - INT TERM HUP
   kill "$APP" 2>/dev/null || true
