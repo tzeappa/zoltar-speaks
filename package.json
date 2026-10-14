@@ -1,0 +1,38 @@
+{
+  "name": "zoltar-speaks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI triage assistant for MacMillan Marketing Company's Client Services and Social Ops teams",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "tsx watch --clear-screen=false server/main.ts",
+    "start": "NODE_ENV=production tsx server/main.ts",
+    "reset": "tsx scripts/reset.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "eval": "tsx scripts/eval.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "services": "tsx scripts/services.ts",
+    "eval:retrieval": "node --import tsx scripts/eval-retrieval.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
+    "@hono/node-server": "^2.1.5",
+    "hono": "^4.13.13",
+    "htmx.org": "^2.0.11",
+    "minisearch": "^7.2.0",
+    "pino": "^10.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "pino-pretty": "^13.2.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.4"
+  }
+}
