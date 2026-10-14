@@ -250,7 +250,7 @@ Tests cover the gate rules, pseudonymization round-trip, schema validation and r
 
 ## CI and dependency updates
 
-`.github/workflows/ci.yml` runs on every push to `main` and every pull request: shellcheck, typecheck, tests, smoke test, and the mock eval (which fails on any missed escalation) on Node 24 and 26, plus `npm audit` and registry signature checks. Actions are pinned to commit SHAs, and Dependabot keeps the pins current.
+`.github/workflows/ci.yml` runs on every push to `main` and every pull request: shellcheck, typecheck, tests, smoke test, the mock eval (which fails on any missed escalation), and the offline retrieval eval on Node 24 and 26, plus `npm audit` and registry signature checks. Actions use their latest major version tag (`@v7`), so minor and patch releases apply automatically; Dependabot opens a PR when a new major is out.
 
 Dependabot (`.github/dependabot.yml`) opens weekly PRs for npm packages and GitHub Actions: one grouped PR for minor and patch updates, and a separate PR for each major, so a breaking change fails on its own without holding back the rest. The CI workflow merges a Dependabot PR, majors included, by itself once every check passes, and only the exact commit that was tested (`--match-head-commit`). The merge job depends on the checks, so it works without branch protection. A merge made by the workflow does not start a new run on `main` (GitHub does not trigger workflows from its own token), so each update is tested on its PR branch; the next push or PR tests them together. Enable "Dependabot security updates" in the repo settings to also get PRs for advisories between weekly runs.
 
